@@ -6,7 +6,8 @@
 <title>暖雅智能体 - 傣医睡药床智能监测</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-body{background:#1a1a1a;color:#fff;line-height:1.6}
+/* 背景改为浅色#f5f5f5，其余不变 */
+body{background:#f5f5f5;color:#333;line-height:1.6}
 nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
 .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
 .nav-left{display:flex;gap:20px;flex-wrap:wrap}
@@ -14,15 +15,14 @@ nav a{color:#fff;text-decoration:none;font-size:16px}
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
 .container{max-width:1200px;margin:40px auto;padding:0 20px}
-.card{background:#2a2a2a;padding:25px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+.card{background:#fff;padding:25px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
 footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
-/* 智能监测样式适配深色主题 */
 .panel {
-  background: #333;
+  background: #fff;
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .title {
   font-size: 24px;
@@ -57,6 +57,7 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
 }
 .temp-control {
   background: #2a3b4c;
+  color: #fff;
   padding: 15px;
   border-radius: 8px;
   font-size: 20px;
@@ -71,22 +72,21 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
 .status .icon {
   font-size: 24px;
 }
-/* 图表核心修改：宽度收窄+高度拉高 + 居中显示 */
 .chart-wrap {
-  width: 80%; /* 宽度收窄为父容器80%，可按需调70%/90% */
-  margin: 0 auto; /* 收窄后居中，视觉更协调 */
+  width: 80%;
+  margin: 0 auto;
 }
 canvas {
   width: 100% !important;
-  height: 280px !important; /* 高度从160px拉高到280px，可按需调 */
-  border: 1px solid #444;
+  height: 280px !important;
+  border: 1px solid #eee;
   border-radius: 8px;
   background: #fff;
 }
 .report {
   line-height: 1.8;
   font-size: 18px;
-  color: #eee;
+  color: #333;
 }
 .analysis-box {
   padding: 15px;
@@ -102,7 +102,6 @@ canvas {
   background: #471a1a;
   color: #e53935;
 }
-/* 响应式适配：小屏恢复满宽，图表高度微调 */
 @media (max-width:768px) {
   .metrics-row {
     flex-direction: column;
@@ -114,10 +113,10 @@ canvas {
     font-size: 18px;
   }
   .chart-wrap {
-    width: 100%; /* 手机端图表满宽，不挤 */
+    width: 100%;
   }
   canvas {
-    height: 220px !important; /* 移动端图表高度微调 */
+    height: 220px !important;
   }
 }
 </style>
@@ -126,9 +125,10 @@ canvas {
 <nav>
   <div class="nav-box">
     <div class="nav-left">
-     <a href="index.html">首页</a>
+    <a href="index.html">首页</a>
       <a href="about.html">关于我们</a>
       <a href="news.html">傣医睡药床智能监测</a>
+      <a href="join.html">傣医睡药床智能康养系统</a>
       <a href="code.html">暖雅智能体</a>
       <a href="product.html">产品服务</a>
       <a href="contact.html">联系我们</a>
@@ -138,10 +138,9 @@ canvas {
 </nav>
 <div class="container">
   <div class="card">
-    <h1 style="color:#409eff;margin-bottom:15px">傣医睡药床智能监测智能体</h1>
-    <p style="color:#ccc">实时监测生命体征 | 智能温控预警 | 自动生成理疗档案</p>
+    <h1 style="color:#409eff;margin-bottom:15px">傣医睡药床智能监测</h1>
+    <p style="color:#666">实时监测生命体征 | 智能温控预警 | 自动生成理疗档案</p>
   </div>
-  <!-- 实时生命体征监测 -->
   <div class="panel">
     <div class="title">1. 实时生命体征监测</div>
     <div class="metrics-row">
@@ -150,20 +149,17 @@ canvas {
       <div class="metric-item" id="bt">体温：-- ℃</div>
     </div>
   </div>
-  <!-- 智能温控与预警 -->
   <div class="panel">
     <div class="title">2. 智能温控与预警</div>
     <div class="temp-control" id="temp">床温：-- ℃（待机）</div>
     <div class="status" id="alert"></div>
   </div>
-  <!-- 历史趋势图表：增加包裹层实现宽窄控制 -->
   <div class="panel">
     <div class="title">3. 历史趋势图表</div>
     <div class="chart-wrap">
       <canvas id="chart"></canvas>
     </div>
   </div>
-  <!-- 患者理疗档案 -->
   <div class="panel">
     <div class="title">4. 患者理疗档案（自动生成）</div>
     <div class="report" id="report"></div>
@@ -172,15 +168,12 @@ canvas {
 </div>
 <footer>© 2026 暖雅智能体 版权所有</footer>
 <script>
-  // 历史数据
   let history = [];
   let bedTemp = 39;
   let isSuitable = false;
   let analysisResult = "正在采集数据...";
-  // 初始化图表
   const canvas = document.getElementById('chart');
   const ctx = canvas.getContext('2d');
-  // 解决canvas画布模糊问题，适配宽高调整
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
     canvas.width = canvas.offsetWidth * dpr;
@@ -192,20 +185,17 @@ canvas {
   function drawChart() {
     const w = canvas.offsetWidth;
     const h = canvas.offsetHeight;
-    const padding = 35; // 适配拉高的高度，内边距微调
+    const padding = 35;
     const innerW = w - 2 * padding;
     const innerH = h - 2 * padding;
-    // 清空画布
     ctx.clearRect(0, 0, w, h);
     if (history.length < 2) return;
-    // 数据范围
     const allHr = history.map(d => d.hr);
     const allBt = history.map(d => d.bt);
     const maxVal = Math.max(...allHr, ...allBt) + 10;
     const minVal = Math.min(...allHr, ...allBt) - 5;
     const yRatio = innerH / (maxVal - minVal);
     const xRatio = innerW / (history.length - 1);
-    // 绘制心率线（红色）
     ctx.beginPath();
     ctx.strokeStyle = '#e53935';
     ctx.lineWidth = 2;
@@ -216,11 +206,10 @@ canvas {
       else ctx.lineTo(x, y);
       ctx.fillStyle = '#e53935';
       ctx.beginPath();
-      ctx.arc(x, y, 4, 0, 2 * Math.PI); // 拉高后数据点恢复4px，显示更清晰
+      ctx.arc(x, y, 4, 0, 2 * Math.PI);
       ctx.fill();
     });
     ctx.stroke();
-    // 绘制体温线（蓝色）
     ctx.beginPath();
     ctx.strokeStyle = '#1890ff';
     ctx.lineWidth = 2;
@@ -235,27 +224,23 @@ canvas {
       ctx.fill();
     });
     ctx.stroke();
-    // X轴时间标签
     ctx.fillStyle = '#666';
-    ctx.font = '14px sans-serif'; // 拉高后字体恢复14px，更易读
+    ctx.font = '14px sans-serif';
     ctx.textAlign = 'center';
     history.forEach((d, i) => {
       const x = padding + i * xRatio;
       ctx.fillText(d.t, x, h - 10);
     });
-    // 图例
     ctx.font = '14px sans-serif';
     ctx.fillText('心率 (红)', 60, 30);
     ctx.fillText('体温 (蓝)', 160, 30);
   }
   function update() {
-    // 模拟数据（带异常点，第8次数据触发预警）
     const step = history.length + 1;
     let hr = 75 + Math.floor(Math.random() * 20);
     let bt = (36.3 + Math.random() * 0.8).toFixed(1);
     const sys = 115 + Math.floor(Math.random() * 10);
     const dia = 75 + Math.floor(Math.random() * 10);
-    // 模拟异常点
     if (step === 8) {
       hr = 115;
       bt = 37.8;
@@ -263,7 +248,6 @@ canvas {
     const t = new Date().toLocaleTimeString().slice(0, 8);
     history.push({ hr, bt: parseFloat(bt), sys, dia, t });
     if (history.length > 10) history.shift();
-    // 更新显示
     const hrItem = document.getElementById('hr');
     const btItem = document.getElementById('bt');
     hrItem.textContent = `心率：${hr} bpm`;
@@ -272,7 +256,6 @@ canvas {
     document.getElementById('bp').className = 'metric-item neutral';
     btItem.textContent = `体温：${bt} ℃`;
     btItem.className = 'metric-item ' + (bt > 37.5 ? 'warning' : 'normal');
-    // 预警与温控
     let warn = false;
     let msg = '';
     if (hr > 100) {
@@ -298,7 +281,6 @@ canvas {
       document.getElementById('alert').style.color = '#2ecc71';
     }
     document.getElementById('temp').textContent = `床温：${bedTemp} ℃（${warn ? '安全保护' : '正常理疗'}）`;
-    // 生成报告
     const hrMin = Math.min(...history.map(d => d.hr));
     const hrMax = Math.max(...history.map(d => d.hr));
     const btMin = Math.min(...history.map(d => d.bt));
@@ -312,7 +294,6 @@ canvas {
       结论：可继续理疗 / 建议暂停观察<br>
       （医生可据此调整）
     `;
-    // 智能准入分析（采集满10条数据后执行）
     if (history.length >= 10) {
       if (hr > 100 || bt > 37.5 || sys > 140 || dia > 90 || hr < 60) {
         isSuitable = false;
@@ -325,10 +306,8 @@ canvas {
       analysisBox.className = 'analysis-box ' + (isSuitable ? 'suitable' : 'not-suitable');
       analysisBox.textContent = analysisResult;
     }
-    // 重绘图表
     drawChart();
   }
-  // 页面加载后立即执行一次，避免初始空白
   update();
   setInterval(update, 2000);
 </script>

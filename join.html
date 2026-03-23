@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傣医睡药床智能康养系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        /* 背景改为浅色#f5f5f5，其余不变 */
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+        nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:999;margin-bottom:20px}
+        .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+        .nav-left{display:flex;gap:20px;flex-wrap:wrap}
+        nav a{color:#fff;text-decoration:none;font-size:16px}
+        nav a:hover{color:#409eff}
+        .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        .prompt {
+            text-align: center;
+            font-size: 18px;
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
+        .voice-btn {
+            display: block;
+            width: 100%;
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 18px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+        .voice-btn:hover {
+            background-color: #c53030;
+        }
+        .chat-area {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 200px;
+            background-color: #f8f9fa;
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #2d3748;
+            white-space: pre-line;
+            overflow-y: auto;
+        }
+        .ai-reply {
+            color: #2b6cb0;
+            font-weight: 500;
+        }
+        .user-input {
+            color: #2f855a;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        #userMsg {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+        #userMsg:focus {
+            border-color: #3182ce;
+        }
+        #sendBtn {
+            padding: 0 20px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .modal-card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+        }
+        .modal-card h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .modal-card p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .fire {
+            font-size: 40px;
+            margin: 15px 0;
+        }
+        .confirm-btn {
+            padding: 10px 30px;
+            background-color: #38a169;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .green-tag {
+            display: inline-block;
+            background-color: #c6f6d5;
+            color: #2f855a;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        @media (max-width:768px) {
+            nav {padding:12px 15px;}
+            .container {padding:20px;}
+            h1 {font-size:26px;}
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-box">
+            <div class="nav-left">
+      <a href="index.html">首页</a>
+      <a href="about.html">关于我们</a>
+      <a href="news.html">傣医睡药床智能监测</a>
+      <a href="join.html">傣医睡药床智能康养系统</a>
+      <a href="code.html">暖雅智能体</a>
+      <a href="product.html">产品服务</a>
+      <a href="contact.html">联系我们</a>
+            </div>
+            <button class="btn-login">登录 / 注册</button>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>傣医睡药床智能康养系统</h1>
+        <p class="prompt">请点击下方按钮，说出你的身体信息和需求</p >
+        <button class="voice-btn" id="startBtn">开始语音录入</button>
+        <div class="chat-area" id="chatBox">
+            智能体回复将显示在这里...
+        </div>
+        <div class="input-group">
+            <input type="text" id="userMsg" placeholder="请输入您的病情、温度反馈或部位需求...">
+            <button id="sendBtn">发送</button>
+        </div>
+    </div>
+    <div class="modal" id="modalEval">
+        <div class="modal-card">
+            <h3>评估结果</h3>
+            <p>已接收患者信息，生命体征正常，无禁忌症，症状属于适应症，可以启动机器。</p >
+            <button class="confirm-btn" onclick="nextModalToHeat()">确认</button>
+        </div>
+    </div>
+    <div class="modal" id="modalHeat">
+        <div class="modal-card">
+            <h3>机器预热中</h3>
+            <div class="fire">🔥</div>
+            <p>温度：39℃ - 42℃</p >
+            <p>预热即将完成，请患者平躺准备</p >
+            <div class="green-tag">✓ 患者已躺好，开始监测</div>
+            <button class="confirm-btn" style="margin-top: 20px;" onclick="nextModalToCheck()">开始理疗</button>
+        </div>
+    </div>
+    <div class="modal" id="modalCheck">
+        <div class="modal-card">
+            <h3>检测到患者已经躺好</h3>
+            <p>温度是否合适？如哪部位需升温请告诉小傣</p >
+        </div>
+    </div>
+    <div class="modal" id="modalHeatConfirm">
+        <div class="modal-card">
+            <h3>正在处理</h3>
+            <p>好的，正在为您升温所需部位，其他部位保持原温度，升温成功✅</p >
+        </div>
+    </div>
+    <div class="modal" id="modalJump">
+        <div class="modal-card">
+            <h3>信息已接收</h3>
+            <p>已接收患者身体检测信息，即将跳转到监测页面...</p >
+        </div>
+    </div>
+    <script>
+        const startBtn = document.getElementById('startBtn');
+        const chatBox = document.getElementById('chatBox');
+        const userMsg = document.getElementById('userMsg');
+        const sendBtn = document.getElementById('sendBtn');
+        const modalEval = document.getElementById('modalEval');
+        const modalHeat = document.getElementById('modalHeat');
+        const modalCheck = document.getElementById('modalCheck');
+        const modalHeatConfirm = document.getElementById('modalHeatConfirm');
+        const modalJump = document.getElementById('modalJump');
+        let currentState = 0;
+        let autoTimer;
+        const INDICATIONS = ['关节炎', '关节损伤', '腰腿痛', '中风偏瘫', '神经炎', '肥胖症', '骨折', '风湿'];
+        const CONTRINDICATIONS = ['高热', '肿瘤', '孕妇', '皮肤破溃', '出血', '急性炎症', '心慌', '胸闷'];
+        const CRITICAL_VALUES = { heart: [50, 120], breath: [10, 25], temp: 38.5, bedTemp: 41 };
+        startBtn.onclick = function() {
+            if (currentState !== 0) return;
+            
+            chatBox.innerHTML = '';
+            const greet = "您好，我是您的傣医睡药床智能助手小傣。请您说出自己的个人体征信息，我会帮您分析是否能做睡药床项目，并存入个人档案，同时为您进行机器预热。";
+            typeWriter(greet, 'ai').then(() => {
+                setTimeout(() => {
+                    modalEval.style.display = 'flex';
+                    autoTimer = setTimeout(() => {
+                        nextModalToHeat();
+                    }, 7000);
+                }, 8000);
+            });
+            currentState = 1;
+            startBtn.disabled = true;
+            startBtn.style.opacity = '0.6';
+        };
+        function nextModalToHeat() {
+            clearTimeout(autoTimer);
+            modalEval.style.display = 'none';
+            setTimeout(() => {
+                modalHeat.style.display = 'flex';
+                autoTimer = setTimeout(() => {
+                    nextModalToCheck();
+                }, 6000);
+            }, 300);
+        }
+        function nextModalToCheck() {
+            clearTimeout(autoTimer);
+            modalHeat.style.display = 'none';
+            setTimeout(() => {
+                modalCheck.style.display = 'flex';
+                autoTimer = setTimeout(() => {
+                    nextModalToHeatConfirm();
+                }, 6000);
+            }, 300);
+        }
+        function nextModalToHeatConfirm() {
+            clearTimeout(autoTimer);
+            modalCheck.style.display = 'none';
+            setTimeout(() => {
+                modalHeatConfirm.style.display = 'flex';
+                autoTimer = setTimeout(() => {
+                    nextModalToJump();
+                }, 6000);
+            }, 300);
+        }
+        function nextModalToJump() {
+            clearTimeout(autoTimer);
+            modalHeatConfirm.style.display = 'none';
+            setTimeout(() => {
+                modalJump.style.display = 'flex';
+                setTimeout(() => {
+                    modalJump.style.display = 'none';
+                }, 3000);
+            }, 300);
+            currentState = 3;
+        }
+        sendBtn.onclick = handleUserInput;
+        userMsg.onkeydown = (e) => e.key === 'Enter' && handleUserInput();
+        function handleUserInput() {
+            if (currentState !== 3) return;
+            const msg = userMsg.value.trim();
+            if (!msg) return;
+            chatBox.innerHTML += `<div class="user-input">您：${msg}</div>`;
+            userMsg.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+            let reply = '';
+            if (msg.includes('心慌') || msg.includes('胸闷') || msg.includes('头晕') || msg.includes('烫伤')) {
+                reply = "检测到您出现不适症状，已立即停止加热，请医护人员立刻处理。";
+                currentState = 4;
+            } else if (msg.includes('肩颈') || msg.includes('膝盖') || msg.includes('腰腹') || msg.includes('加热')) {
+                reply = "好的，我已为该区域升温。\n现在温度合适吗？如果还需要调整，请告诉我。";
+            } else if (msg.includes('41') || msg.includes('太热') || msg.includes('临界')) {
+                reply = "床温接近临界值，我已自动降低功率，保持安全恒温。";
+            } else if (msg.includes('时间到') || msg.includes('结束')) {
+                reply = "您的理疗时间已到，请慢慢起身，我将为您呼叫医护人员。";
+                currentState = 4;
+            } else {
+                reply = "收到，我将持续为您监测生命体征与床体温度，确保安全理疗。";
+            }
+            typeWriter(reply, 'ai');
+        }
+        function typeWriter(text, role) {
+            return new Promise((resolve) => {
+                let i = 0;
+                const className = role === 'ai' ? 'ai-reply' : 'user-input';
+                const prefix = role === 'ai' ? '小傣：' : '';
+                const div = document.createElement('div');
+                div.className = className;
+                div.innerHTML = prefix;
+                chatBox.appendChild(div);
+                chatBox.scrollTop = chatBox.scrollHeight;
+                const timer = setInterval(() => {
+                    if (i < text.length) {
+                        div.innerHTML += text.charAt(i);
+                        i++;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    } else {
+                        clearInterval(timer);
+                        resolve();
+                    }
+                }, 30);
+            });
+        }
+    </script>
+</body>
+</html>

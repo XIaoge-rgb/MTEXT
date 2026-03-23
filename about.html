@@ -6,15 +6,14 @@
 <title>关于我们</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-body{background:#1a1a1a;color:#fff;line-height:1.6}
-nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
+body{background:#f5f5f5;color:#333;line-height:1.6} /* 核心修改：背景改为浅色#f5f5f5 */
+nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99} /* 导航保留黑色 */
 .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
 .nav-left{display:flex;gap:20px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;font-size:16px}
+nav a{color:#fff;text-decoration:none;font-size:16px} /* 导航文字白色不变 */
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
 .container{max-width:1200px;margin:40px auto;padding:0 20px}
-
 /* 整体布局：左右并排 */
 .row {
   display: flex;
@@ -22,30 +21,29 @@ nav a:hover{color:#409eff}
   margin-bottom: 25px;
   align-items: flex-start; /* 保持顶部对齐 */
 }
-
-/* 左侧：视频模块（黑色框左靠+加长） */
+/* 左侧：视频模块（改为白色框） */
 .col-left {
   flex: 1; /* 占一半宽度 */
-  background:#2a2a2a;
-  padding: 40px 30px; /* 上下内边距加大，视觉更长 */
+  background:#fff;/* 黑色框改白色 */
+  padding: 40px 30px;
   border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
-  min-height: 600px; /* 最小高度，强制拉长框体 */
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);/* 阴影调浅，适配白色框 */
+  min-height: 600px;
+  color:#333;/* 模块内文字深灰，保证可读性 */
 }
-
-/* 右侧：理念模块（黑色框右靠+加长，和左侧等高） */
+/* 右侧：理念模块（改为白色框，和左侧一致） */
 .col-right {
   flex: 1; /* 占一半宽度 */
-  background:#2a2a2a;
-  padding: 40px 30px; /* 上下内边距和左侧一致 */
+  background:#fff;/* 黑色框改白色 */
+  padding: 40px 30px;
   border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.3);
-  min-height: 600px; /* 和左侧同高，视觉对称 */
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);/* 阴影调浅，适配白色框 */
+  min-height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 内容垂直居中，避免框长内容空 */
+  justify-content: center;
+  color:#333;/* 模块内文字深灰，保证可读性 */
 }
-
 /* 视频自适应大小 */
 .video-wrap {
   width: 50%;
@@ -53,28 +51,25 @@ nav a:hover{color:#409eff}
 }
 .video-wrap video {
   width: 100%;
-  height: auto; /* 高度自动，不变形 */
+  height: auto;
   border-radius:8px;
   object-fit: cover;
-  min-height: 350px; /* 视频同步拉长，和框体匹配 */
+  min-height: 350px;
 }
-
-/* 标题字号加大，和长框匹配 */
+/* 标题字号加大，主题色保留 */
 .col-left h2, .col-right h2 {
   font-size: 28px;
-  color: #409eff; /* 加主题色，更醒目 */
+  color: #409eff; /* 主题色不变，醒目且和导航hover呼应 */
   margin-bottom: 10px;
 }
-
-footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
-
+footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px} /* 底部保留黑色 */
 /* 移动端适配：小屏时上下堆叠，取消最小高度 */
 @media (max-width:768px){
   .row {
     flex-direction: column;
   }
   .col-left, .col-right {
-    min-height: auto; /* 小屏随内容自适应高度 */
+    min-height: auto;
     padding: 30px 20px;
   }
   .video-wrap video {
@@ -90,6 +85,7 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
       <a href="index.html">首页</a>
       <a href="about.html">关于我们</a>
       <a href="news.html">傣医睡药床智能监测</a>
+      <a href="join.html">傣医睡药床智能康养系统</a>
       <a href="code.html">暖雅智能体</a>
       <a href="product.html">产品服务</a>
       <a href="contact.html">联系我们</a>
@@ -97,40 +93,35 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
     <button class="btn-login">登录 / 注册</button>
   </div>
 </nav>
-
 <div class="container">
   <!-- 左右并排布局 -->
   <div class="row">
     <!-- 左侧：视频模块 -->
     <div class="col-left">
-      <h2>关于我们</h2>
+      <h2><span style="display: inline-block; text-align: left; min-width: 180px;"></span>关于我们</h2>
       <div class="video-wrap">
         <!-- 替换成你的视频地址 -->
-        <video src="AN.mp4" controls poster="video-cover.jpg">
-          你的浏览器不支持视频播放，请更换浏览器后重试
+        <!-- 把原来的 <video> 整行删掉，换成这行 -->
+<img src="new bed.jpg" alt="傣医暖雅睡药疗法" style="width: 200%; max-width: 800px; height: auto; border-radius: 8px;">
         </video>
       </div>
-      <p style="margin-top:15px;font-size:16px;line-height:1.8">
-        我们以国家级非物质文化遗产傣医睡药疗法为核心，融合物联网传感与智能温控技术，打造智能控温傣医睡药床，并配套自主研发的自适应网页监测系统。<br><br>
-        通过分区温度采集、AI智能体决策与多终端远程控制，实现传统睡药疗法的安全化、智能化与便捷化，契合“十五五”健康中国康养发展方向。项目结构清晰、成本可控，是学生团队可落地的民族医药+智能康养创新实践，致力于让传统康养技术更安全、更易用。
-
-      </p>
+      <p style="text-indent: 2em;">
+        智控暖雅项目聚焦国家级非遗傣医暖雅（睡药疗法）现代化传承，精准破解传统疗法温控不均、无标准化体系、安全监测有短板等行业痛点。项目核心产品为二代智控暖雅分区控温睡药床，可实现 ±0.5℃高精度控温，配套四级安全防护体系与数字化健康管理平台，兼顾靶向理疗与全流程安全追溯。</p>
+      <p style="text-indent: 2em;">项目联合国家级傣医药专家打造国内首套睡药疗法全流程标准化体系，核心技术已获实用新型专利受理，经临床验证疗效显著，完成多场景落地试点，斩获多项省级双创赛事荣誉，致力于推动傣医药非遗技艺标准化、普惠化发展。</p>
     </div>
-
     <!-- 右侧：理念模块 -->
     <div class="col-right">
-      <h2>我们的理念</h2>
-      <p style="margin-top:15px;font-size:18px;line-height:2.0">
-        传承傣药精髓，创新智能理疗<br><br>
-        以用户健康为核心，用科技赋能传统医学<br><br>
-        专业、专注、专心，让每一次理疗都更安心<br><br>
-        守正不泥古，创新不离宗<br><br>
-        让傣医睡药疗法，服务更多健康需求者
+      <h2><span style="display: inline-block; text-align: left; min-width: 180px;"></span>我们的理念</h2>
+      <p style="margin-top:15px;font-size:18px;line-height:1.5">
+        <span style="display: inline-block; text-align: left; min-width: 150px;"></span>傣医标准化，智控新标杆<br><br>
+        <span style="display: inline-block; text-align: left; min-width: 150px;"></span>分区精准调，理疗更对症<br><br>
+        <span style="display: inline-block; text-align: left; min-width: 150px;"></span>数据可追溯，诊疗更规范<br><br>
+        <span style="display: inline-block; text-align: left; min-width: 150px;"></span>低成本升级，服务高赋能<br><br>
+        <span style="display: inline-block; text-align: left; min-width: 150px;"></span>低成本升级，服务高赋能
       </p>
     </div>
   </div>
 </div>
-
 <footer>© 傣药沙萃——基于暖雅（睡药疗法）网站平台 版权所有</footer>
 </body>
 </html>

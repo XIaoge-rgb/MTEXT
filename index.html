@@ -6,60 +6,53 @@
 <title>傣药沙萃——基于暖雅（睡药疗法）智能体平台</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-/* 保留原有背景样式，不做任何修改 */
+/* 背景改为浅色#f5f5f5，其余不变 */
 body{
-  background: #000; /* 保持原纯黑背景 */
-  color:#fff; /* 保持原白色文字，适配黑背景 */
+  background: #f5f5f5;
+  color:#333;
   line-height:1.6;
   min-height: 100vh;
 }
-/* 导航：保留原有黑色样式，无任何修改 */
 nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
 .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .nav-left{display:flex;gap:30px}
 nav a{color:#fff;text-decoration:none;font-size:16px}
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
-/* 轮播：保留原有样式，不做任何修改（图片、文字颜色均不变） */
 .banner {
   width: 100%;
-  height: 450px; /* 原高度不变 */
-  background: url("indexed.jpg") center center / 80% auto no-repeat; /* 图片原路径/大小/位置不变 */
-  background-color: transparent; /* 原透明背景不变 */
+  height: 450px;
+  background: url("index.jpg") center center / 80% auto no-repeat;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 .banner h1 {
-  font-size: 72px; /* 原字号不变 */
+  font-size: 72px;
   margin-bottom: 15px;
-  color: #fff; /* 保持原白色文字 */
+  color: #222;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   font-weight: bold;
 }
-/* 轮播副标题：保留原样式，不做修改 */
 .banner p {
-  font-size: 28px; /* 原字号不变 */
-  color: #fff; /* 保持原白色文字 */
+  font-size: 28px;
+  color: #333;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   margin: 0;
 }
-/* 内容布局：保留原网格布局，卡片样式不变，仅修改图片显示 */
 .container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
-.card{background:rgba(34,34,34,0.8);/* 保留原黑色半透卡片 */padding:50px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.3);/* 保留原阴影 */}
-/* 图片调整核心：自适应高度，完整展示图片内容，保留原有圆角和间距 */
+.card{background:#fff;padding:50px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:relative;}
+/* 核心修改：床体图片铺展样式，通用卡片图片适配铺展，取消圆角、高度自适应、填满宽度 */
 .card img{
-  width: 100%; /* 宽度铺满卡片 */
-  height: auto; /* 高度自适应，不裁剪图片 */
-  object-fit: contain; /* 保持图片比例，完整显示全部内容 */
-  border-radius: 50px; /* 保留原圆角样式 */
-  margin: 40px 0; /* 保留原上下间距 */
-  max-height: 400px; /* 限制最大高度，避免拉伸卡片 */
+  width: 100%;
+  height: auto; /* 高度自适应，避免图片拉伸 */
+  object-fit: cover;
+  border-radius: 0; /* 取消圆角，完全铺展 */
+  margin: 20px 0; /* 微调上下间距，更美观 */
 }
-/* 按钮：保留原有样式，无修改 */
-button{padding:10px 20px;background:#409eff;color:#fff;border:none;border-radius:6px;border:none;cursor:pointer;margin-top:10px}
-/* 底部：保留原有黑色样式，无任何修改 */
+button{padding:10px 20px;background:#409eff;color:#fff;border:none;border-radius:6px;cursor:pointer;margin-top:10px}
 footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
 </style>
 </head>
@@ -70,6 +63,7 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
    <a href="index.html">首页</a>
       <a href="about.html">关于我们</a>
       <a href="news.html">傣医睡药床智能监测</a>
+        <a href="join.html">傣医睡药床智能康养系统</a>
       <a href="code.html">暖雅智能体</a>
       <a href="product.html">产品服务</a>
       <a href="contact.html">联系我们</a>
@@ -85,15 +79,33 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
 </div>
 <div class="container">
   <div class="card">
-    <h2>网站介绍</h2>
-    <img src="liucheng.png" alt="图片"> <!-- 完整展示，自适应大小 -->
-    <p>聚焦傣医非遗暖雅（睡药疗法）现代化创新，融合沙疗技术与现代智能科技，研发智能温控睡药床，打造“药-沙-热”三维协同治疗体系，解决传统睡药疗法温控难、药材消耗大等痛点。项目深挖西双版纳傣药资源，打造多元傣药配方，结合超临界萃取等现代技术提升药效，依托傣医理论与科学原理，对风湿骨痛、中风后遗症等病症疗效显著，兼具民族医药传承价值与市场发展潜力，由专业教师与傣医专家指导，团队专业配置完善，创新模式可复制、易推广。</p>
+    <h2>傣医暖雅（睡药疗法）介绍</h2>
+    <img src="liucheng.png" alt="图片">
+    <p style="text-indent: 2em;">傣医暖雅（睡药疗法），傣语称“暖雅”，是传承千年的傣医经典外治疗法，2008年列入国家级非物质文化遗产名录，是傣医药体系的特色瑰宝。疗法以“调平四塔、通解风毒”为核心，精选西双版纳本土傣药配伍炮制，通过热力渗透让药效深入肌理，实现通气血、祛风湿、调脏腑的康养效果，对风湿骨痛、中风后遗症等不适均有良好调理作用。我们以传承非遗为初心，用现代温控技术为传统疗法赋能，推动傣医暖雅标准化、普惠化升级。</p>
     <button>了解更多</button>
   </div>
   <div class="card">
-    <h2>核心功能</h2>
-    <img src="bed.png" alt="图片"> <!-- 完整展示，自适应大小 -->
-    <p>✅ AI 智能体自主感知与决策功能<br>✅ 多区域独立精准温控功能<br>✅ 睡药疗法与沙疗协同增效功能<br>✅ 个性化智能适配与迭代优化功能<br>✅ 多重智能安全防护功能<br>✅ 智能人机交互与远程管理功能</p>
+    <h2>基于暖雅睡药疗法的智能化创新—智控暖雅</h2>
+    <img src="new bed.jpg" alt="床体图片">
+   <p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 多区域独立精准恒温控制</span>
+</p >
+<p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 多维协同增效理疗</span>
+</p >
+<p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 多重安全防护全程兜底</span>
+</p >
+<p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 标准化流程智能适配</span>
+</p >
+<p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 多终端远程温控与监测</span>
+</p ><p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 药材高效利用降本增效</span>
+</p ></p ><p style="text-align: center; margin: 8px 0;">
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 适配规模化康养场景使</span>
+</p >
   </div>
 </div>
 <footer>© 傣药沙萃——基于暖雅（睡药疗法）网站平台 版权所有</footer>

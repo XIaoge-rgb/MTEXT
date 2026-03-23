@@ -6,32 +6,32 @@
 <title>产品服务</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-body{background:#1a1a1a;color:#fff;line-height:1.6}
-nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
+body{background:#f5f5f5;color:#333;line-height:1.6} /* 背景改为浅色#f5f5f5，其余不变 */
+nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99} /* 导航保留黑色 */
 .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .nav-left{display:flex;gap:30px}
 nav a{color:#fff;text-decoration:none;font-size:18px}
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
 .container{max-width:1200px;margin:40px auto;padding:0 20px}
-.card{background:#2a2a2a;padding:30px;border-radius:12px;margin-bottom:25px}
+.card{background:#fff;padding:30px;border-radius:12px;margin-bottom:25px;box-shadow:0 4px 12px rgba(0,0,0,0.1)} /* 黑框改白框，浅阴影适配 */
 .pro-box{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px}
-.pro-item{background:#333;padding:20px;border-radius:10px;text-align:center}
-/* 核心修改：图片大小适配，统一显示效果 */
+.pro-item{background:#fff;padding:20px;border-radius:10px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.1)} /* 黑框改白框，浅阴影适配 */
+/* 图片样式完全保留原有设置，无任何修改 */
 .pro-item img{
   width: 100%;
-  height: 300px; /* 调高图片高度，更清晰展示细节 */
-  object-fit: cover; /* 保持图片比例，裁剪多余部分，不拉伸 */
+  height: 300px;
+  object-fit: cover;
   border-radius:8px;
   margin-bottom:15px;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
-.pro-item h3{margin-bottom:10px;color:#409eff}
-.pro-item p{color:#ccc;font-size:14px}
-footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
-/* 移动端适配：小屏时图片高度自适应 */
+.pro-item h3{margin-bottom:10px;color:#409eff} /* 原有主题色不变 */
+.pro-item p{color:#666;font-size:14px} /* 浅灰保证可读，其余不变 */
+footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px} /* 底部保留黑色 */
+/* 移动端适配完全保留原有规则 */
 @media (max-width:768px){
   .pro-box{grid-template-columns:1fr}
   .pro-item img{height: auto;max-height: 200px;}
@@ -45,32 +45,34 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
     <a href="index.html">首页</a>
       <a href="about.html">关于我们</a>
       <a href="news.html">傣医睡药床智能监测</a>
+      <a href="join.html">傣医睡药床智能康养系统</a>
       <a href="code.html">暖雅智能体</a>
       <a href="product.html">产品服务</a>
       <a href="contact.html">联系我们</a>
+    </div>
     <button class="btn-login">登录 / 注册</button>
   </div>
 </nav>
 <div class="container">
   <div class="card">
     <h1>产品服务</h1>
-    <p style="margin:15px 0;color:#ccc">傣药沙萃——基于暖雅（睡药疗法）网站平台</p>
+    <p style="margin:15px 0;color:#666">傣药沙萃——基于暖雅（睡药疗法）网站平台</p> <!-- 浅灰保证可读 -->
   </div>
   <div class="pro-box">
     <div class="pro-item">
-      <img src="AI.jpg" alt="服务1">
-      <h3>AI健康初筛服务</h3>
-      <p>智能采集体征，精准判断适应症，生成安全理疗方案</p>
+      <img src="hezuo.jpg" alt="服务1">
+      <h3>合作机构展示与招商合作模块</h3>
+      <p>展示合作机构，开放招商对接入口</p>
     </div>
     <div class="pro-item">
-      <img src="fenqu.jpg" alt="服务2">
-      <h3>分区精准控温服务</h3>
-      <p>多区域独立控温，AI智能调节，兼顾药效释放与体感舒适</p>
+      <img src="xiaoguo.jpg" alt="服务2">
+      <h3>治疗效果与口碑案例模块</h3>
+      <p>呈现真实案例，展示用户口碑评价</p>
     </div>
     <div class="pro-item">
-      <img src="anquan.jpg" alt="服务3">
-      <h3>实时安全监测服务</h3>
-      <p>可视化床体状态，超温自动报警，全方位守护理疗安全</p>
+      <img src="dian.jpg" alt="服务3">
+      <h3>附近治疗点查询模块</h3>
+      <p>一键定位就近治疗点，支持导航预约</p>
     </div>
     <div class="pro-item">
       <img src="jiankang.jpg" alt="服务4">
