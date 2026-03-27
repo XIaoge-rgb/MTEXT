@@ -6,75 +6,63 @@
 <title>关于我们</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-body{background:#f5f5f5;color:#333;line-height:1.6} /* 核心修改：背景改为浅色#f5f5f5 */
-nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99} /* 导航保留黑色 */
+body{background:#f5f5f5;color:#333;line-height:1.6}
+nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
 .nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
 .nav-left{display:flex;gap:20px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;font-size:16px} /* 导航文字白色不变 */
+nav a{color:#fff;text-decoration:none;font-size:16px}
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
-.container{max-width:1200px;margin:40px auto;padding:0 20px}
-/* 整体布局：左右并排 */
+.container{max-width:1200px;margin:40px auto;padding:0 20px;width:100%}
 .row {
   display: flex;
-  gap: 30px; /* 左右模块之间的间距 */
+  gap: 30px;
   margin-bottom: 25px;
-  align-items: flex-start; /* 保持顶部对齐 */
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
-/* 左侧：视频模块（改为白色框） */
-.col-left {
-  flex: 1; /* 占一半宽度 */
-  background:#fff;/* 黑色框改白色 */
+.col-left, .col-right {
+  flex: 1;
+  min-width: 300px;
+  background:#fff;
   padding: 40px 30px;
   border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);/* 阴影调浅，适配白色框 */
-  min-height: 600px;
-  color:#333;/* 模块内文字深灰，保证可读性 */
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  color:#333;
 }
-/* 右侧：理念模块（改为白色框，和左侧一致） */
-.col-right {
-  flex: 1; /* 占一半宽度 */
-  background:#fff;/* 黑色框改白色 */
-  padding: 40px 30px;
-  border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);/* 阴影调浅，适配白色框 */
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color:#333;/* 模块内文字深灰，保证可读性 */
-}
-/* 视频自适应大小 */
 .video-wrap {
-  width: 50%;
+  width: 100%;
   margin: 25px 0;
 }
-.video-wrap video {
+.video-wrap img {
   width: 100%;
   height: auto;
   border-radius:8px;
   object-fit: cover;
-  min-height: 350px;
+  max-width: 800px;
+  margin: 0 auto;
 }
-/* 标题字号加大，主题色保留 */
 .col-left h2, .col-right h2 {
   font-size: 28px;
-  color: #409eff; /* 主题色不变，醒目且和导航hover呼应 */
+  color: #409eff;
   margin-bottom: 10px;
 }
-footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px} /* 底部保留黑色 */
-/* 移动端适配：小屏时上下堆叠，取消最小高度 */
+footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
+/* 移动端适配 */
 @media (max-width:768px){
-  .row {
-    flex-direction: column;
-  }
+  .row {flex-direction: column;gap:20px;}
   .col-left, .col-right {
     min-height: auto;
     padding: 30px 20px;
   }
-  .video-wrap video {
-    min-height: auto;
-  }
+  .nav-left{gap:15px;}
+  nav{padding:12px 15px;}
+  nav a{font-size:14px;}
+  .btn-login{padding:6px 12px;font-size:14px;}
+  .container{margin:20px auto;padding:0 15px;}
+  .col-left h2, .col-right h2{font-size:24px;}
+  .video-wrap{margin:15px 0;}
+  footer{padding:20px;margin-top:30px;}
 }
 </style>
 </head>
@@ -94,22 +82,16 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
   </div>
 </nav>
 <div class="container">
-  <!-- 左右并排布局 -->
   <div class="row">
-    <!-- 左侧：视频模块 -->
     <div class="col-left">
       <h2><span style="display: inline-block; text-align: left; min-width: 180px;"></span>关于我们</h2>
       <div class="video-wrap">
-        <!-- 替换成你的视频地址 -->
-        <!-- 把原来的 <video> 整行删掉，换成这行 -->
-<img src="new bed.jpg" alt="傣医暖雅睡药疗法" style="width: 200%; max-width: 800px; height: auto; border-radius: 8px;">
-        </video>
+        <img src="new bed.jpg" alt="傣医暖雅睡药疗法">
       </div>
       <p style="text-indent: 2em;">
         智控暖雅项目聚焦国家级非遗傣医暖雅（睡药疗法）现代化传承，精准破解传统疗法温控不均、无标准化体系、安全监测有短板等行业痛点。项目核心产品为二代智控暖雅分区控温睡药床，可实现 ±0.5℃高精度控温，配套四级安全防护体系与数字化健康管理平台，兼顾靶向理疗与全流程安全追溯。</p>
       <p style="text-indent: 2em;">项目联合国家级傣医药专家打造国内首套睡药疗法全流程标准化体系，核心技术已获实用新型专利受理，经临床验证疗效显著，完成多场景落地试点，斩获多项省级双创赛事荣誉，致力于推动傣医药非遗技艺标准化、普惠化发展。</p>
     </div>
-    <!-- 右侧：理念模块 -->
     <div class="col-right">
       <h2><span style="display: inline-block; text-align: left; min-width: 180px;"></span>我们的理念</h2>
       <p style="margin-top:15px;font-size:18px;line-height:1.5">

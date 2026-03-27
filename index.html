@@ -6,16 +6,15 @@
 <title>傣药沙萃——基于暖雅（睡药疗法）智能体平台</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Microsoft YaHei,sans-serif}
-/* 背景改为浅色#f5f5f5，其余不变 */
 body{
   background: #f5f5f5;
   color:#333;
   line-height:1.6;
   min-height: 100vh;
-}
+} /* 移除顶部内边距，删除导航上方空白 */
 nav{background:#222;padding:18px 30px;position:sticky;top:0;z-index:99}
-.nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
-.nav-left{display:flex;gap:30px}
+.nav-box{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.nav-left{display:flex;gap:30px;flex-wrap:wrap}
 nav a{color:#fff;text-decoration:none;font-size:16px}
 nav a:hover{color:#409eff}
 .btn-login{background:#409eff;color:#fff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer}
@@ -28,6 +27,7 @@ nav a:hover{color:#409eff}
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 20px;
 }
 .banner h1 {
   font-size: 72px;
@@ -42,18 +42,31 @@ nav a:hover{color:#409eff}
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   margin: 0;
 }
-.container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:25px;width:100%}
 .card{background:#fff;padding:50px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:relative;}
-/* 核心修改：床体图片铺展样式，通用卡片图片适配铺展，取消圆角、高度自适应、填满宽度 */
 .card img{
   width: 100%;
-  height: auto; /* 高度自适应，避免图片拉伸 */
+  height: auto;
   object-fit: cover;
-  border-radius: 0; /* 取消圆角，完全铺展 */
-  margin: 20px 0; /* 微调上下间距，更美观 */
+  border-radius: 0;
+  margin: 20px 0;
 }
 button{padding:10px 20px;background:#409eff;color:#fff;border:none;border-radius:6px;cursor:pointer;margin-top:10px}
 footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px}
+/* 移动端适配 */
+@media (max-width:768px){
+  .nav-left{gap:15px;}
+  nav{padding:12px 15px;}
+  nav a{font-size:14px;}
+  .btn-login{padding:6px 12px;font-size:14px;}
+  .banner{height:250px;background-size:100% auto;}
+  .banner h1{font-size:36px;margin-bottom:10px;}
+  .banner p{font-size:18px;}
+  .container{margin:20px auto;padding:0 15px;gap:20px;}
+  .card{padding:30px;}
+  .card img{margin:15px 0;}
+  footer{padding:20px;margin-top:30px;}
+}
 </style>
 </head>
 <body>
@@ -104,7 +117,7 @@ footer{background:#222;text-align:center;padding:25px;color:#aaa;margin-top:50px
 </p ><p style="text-align: center; margin: 8px 0;">
   <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 药材高效利用降本增效</span>
 </p ></p ><p style="text-align: center; margin: 8px 0;">
-  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 适配规模化康养场景使</span>
+  <span style="display: inline-block; text-align: left; min-width: 220px;">✅ 适配规模化康养场景使用</span>
 </p >
   </div>
 </div>
